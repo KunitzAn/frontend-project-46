@@ -50,9 +50,6 @@ const parser = (filepath1, filepath2) => {
     return diff(dataParse1, dataParse2);
 };
 
-
-const filepath1 = './_fixtures_/file1.json';
-const filepath2 = './_fixtures_/file2.json';
   
 export default parser;
 
