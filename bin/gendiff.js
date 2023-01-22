@@ -6,12 +6,27 @@ import { program } from 'commander';
 program 
     .version('0.0.1')
     .description('Compares two configuration files and shows a difference.')
+    .arguments('<filepath1> <filepath2>')
+    .option('-f, --format <type>', 'output format')
 
 program.parse(process.arvs);
 
 
-
 /*
+//var 1
+const command = (names) => {
+    for (const name of names) {
+      console.log(`Hello, ${name}!`);
+    }
+  };
+  
+program
+    .version('0.0.1')
+    .arguments('<names...>')
+    .action(command)
+    .parse(process.argv);
+
+// var 2
 program .version('0.0.1');
     //.option('-h, --help', 'display help for command');
 
@@ -31,6 +46,5 @@ program
     .action(function(task){
         console.log(`Doing this ${task}`)
     })
-
 */
 
