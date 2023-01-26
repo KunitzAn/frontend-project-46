@@ -11,7 +11,7 @@ jobs:
           node-version: '18.12.1'
       - run: make install
       - run: make lint 
-      - uses: paambaati/codeclimate-action@v3.0.0
+      - uses: paambaati/codeclimate-action@v3.1.1
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
