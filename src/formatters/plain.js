@@ -7,32 +7,33 @@ const stringify = (value) => {
   return typeof value === 'string' ? `'${value}'` : value;
 };
 
-const formatPlain = (diff) => {
+const formatPlain = (diff, kyesAcc = []) => {
+  const changedDiff = diff.filter((item) => item.state !== 'unchanged');
 
-  const iter = (tree, key = '') => {
-    const result = tree.flatMap((item) => {
-      const newKeys = [...key, item.key];
+  const result = changedDiff.map((item) => {
+    const curKeys = kyesAcc.concat(item.key);
 
-      switch (item.state) {
-        case 'removed':
-          return `Property '${newKeys.join('.')}' was removed`;
-        case 'added':
-          return `Property '${newKeys.join('.')}' was added with value: ${stringify(item.value)}`;
-        case 'changed':
-          return `Property '${newKeys.join('.')}' was updated. From ${stringify(item.value1)} to ${stringify(item.value2)}`;
-        case 'nested':
-          return iter(item.children, newKeys);
-        case 'unchanged':
-          return null;
-        default:
-          throw new Error(`Unknown type ${item.type}`);
-      }
-    });
+    switch (item.state) {
+      case 'added': {
+        const value = stringify(item.value);
+        return `Property '${curKeys.join('.')}' was added with value: ${value}`; }
 
-    return result.filter((item) => item !== null).join('\n');
-  };
+      case 'removed':
+        return `Property '${curKeys.join('.')}' was removed`;
 
-  return iter(diff, []);
+      case 'updated': {
+        const oldValue = stringify(item.value.oldValue);
+        const newValue = stringify(item.value.newValue);
+        return `Property '${curKeys.join('.')}' was updated. From ${oldValue} to ${newValue}`; }
+
+      default:
+        return formatPlain(item.value, curKeys);
+    }
+
+  });
+
+  return result.join('\n');
 };
 
 export default formatPlain;
+

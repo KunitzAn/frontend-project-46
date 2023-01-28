@@ -8,18 +8,25 @@ const __dirname = path.dirname(__filename);
 
 const getPath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-test('json', () => {
-    const filename1 = getPath('file1.json');
-    const filename2 = getPath('file2.json');
-    const resultname = getPath('file_result.txt');
-    const result = readFileSync(resultname, 'utf8');
-    expect(parser(filename1, filename2)).toBe(result);
+const cases = [
+    ['file1.json', 'file2.json', 'stylish_result.txt', 'stylish'],
+    ['file1.yml', 'file2.yml', 'stylish_result.txt', 'stylish'],
+    ['file1.json', 'file2.json', 'plain_result.txt', 'plain'],
+    ['file1.yml', 'file2.yml', 'plain_result.txt', 'plain'],
+   /* ['file1.json', 'file2.json', 'json_result.txt', 'json'],
+    ['file1.yaml', 'file2.yml', 'json_result.txt', 'json'],*/
+]
+
+test.each(cases)('Compare %s and %s to expect %s in %s format', (fileName1, fileName2, resultFileName, format) => {
+    const filePath1 = getPath(fileName1);
+    const filePath2 = getPath(fileName2);
+    const expectedResultPath = getPath(resultFileName);
+    const expectedResult = readFileSync(expectedResultPath, 'utf8');
+    expect(parser(filePath1, filePath2, format)).toBe(expectedResult);
 });
 
-test('yml', () => {
-    const filename1 = getPath('file1.yml');
-    const filename2 = getPath('file2.yml');
-    const resultname = getPath('file_result.txt');
-    const result = readFileSync(resultname, 'utf8');
-    expect(parser(filename1, filename2)).toBe(result);
-});
+
+
+
+
+
