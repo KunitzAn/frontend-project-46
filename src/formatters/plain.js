@@ -29,11 +29,9 @@ const formatPlain = (diff, kyesAcc = []) => {
       default:
         return formatPlain(item.value, curKeys);
     }
-
   });
 
   return result.join('\n');
 };
 
 export default formatPlain;
-
