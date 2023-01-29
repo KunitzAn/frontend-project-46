@@ -13,8 +13,8 @@ const cases = [
     ['file1.yml', 'file2.yml', 'stylish_result.txt', 'stylish'],
     ['file1.json', 'file2.json', 'plain_result.txt', 'plain'],
     ['file1.yml', 'file2.yml', 'plain_result.txt', 'plain'],
-   /* ['file1.json', 'file2.json', 'json_result.txt', 'json'],
-    ['file1.yaml', 'file2.yml', 'json_result.txt', 'json'],*/
+    ['file1.json', 'file2.json', 'json_result.txt', 'json'],
+    ['file1.yml', 'file2.yml', 'json_result.txt', 'json']
 ]
 
 test.each(cases)('Compare %s and %s to expect %s in %s format', (fileName1, fileName2, resultFileName, format) => {
