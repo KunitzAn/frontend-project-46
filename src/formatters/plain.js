@@ -7,7 +7,6 @@ const stringify = (value) => {
   return typeof value === 'string' ? `'${value}'` : value;
 };
 
-
 const formatPlain = (diff, keysAcc = []) => {
   const changedDiff = diff.filter((item) => item.state !== 'unchanged');
 
@@ -15,7 +14,6 @@ const formatPlain = (diff, keysAcc = []) => {
     const curKeys = keysAcc.concat(item.key);
     const buildPropertyPath = (keys) => keys.join('.');
 
-    
     switch (item.state) {
       case 'added': {
         const value = stringify(item.value);
@@ -32,11 +30,10 @@ const formatPlain = (diff, keysAcc = []) => {
       case 'nested': {
         return formatPlain(item.value, curKeys);
       }
-      
+
       default:
         throw new Error(`Unknown type ${item.state}`);
     }
-
   });
 
   return result.join('\n');

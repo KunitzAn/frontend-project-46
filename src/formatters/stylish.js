@@ -23,7 +23,7 @@ const makeStylish = (diff, depth) => {
         const curNewValue = stringify(value.newValue, depth + 1);
 
         return [`${shiftLine(depth + 1)}${signs.removed}${key}: ${curOldValue}`,
-        `${shiftLine(depth + 1)}${signs.added}${key}: ${curNewValue}`];
+          `${shiftLine(depth + 1)}${signs.added}${key}: ${curNewValue}`];
       }
 
       case 'nested': {
@@ -38,7 +38,6 @@ const makeStylish = (diff, depth) => {
 
       default:
         throw new Error(`Unknown type ${state}`);
-
     }
   });
 
