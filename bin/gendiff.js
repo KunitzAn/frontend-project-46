@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import parser from '../src/index.js';
+import genDiff from '../src/index.js';
 
 program
   .version('0.0.1')
@@ -10,7 +10,7 @@ program
   .option('-f, --format <type>', 'output format', 'stylish')
 
   .action((filepath1, filepath2, options) => {
-    console.log(parser(filepath1, filepath2, options.format));
+    console.log(genDiff(filepath1, filepath2, options.format));
   });
 
 program.parse(process.arvs);

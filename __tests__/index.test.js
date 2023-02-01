@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import parser from '../src/index.js';
+import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,5 +22,5 @@ test.each(cases)('Compare %s and %s to expect %s in %s format', (fileName1, file
   const filePath2 = getPath(fileName2);
   const expectedResultPath = getPath(resultFileName);
   const expectedResult = readFileSync(expectedResultPath, 'utf8');
-  expect(parser(filePath1, filePath2, format)).toBe(expectedResult);
+  expect(genDiff(filePath1, filePath2, format)).toBe(expectedResult);
 });

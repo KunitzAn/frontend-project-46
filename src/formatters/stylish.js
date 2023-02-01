@@ -17,20 +17,29 @@ const makeStylish = (diff, depth) => {
   const items = diff.flatMap(({ key, value, state }) => {
     const signs = { added: '+ ', removed: '- ', unchanged: '  ' };
 
-    if (state === 'updated') {
-      const curOldValue = stringify(value.oldValue, depth + 1);
-      const curNewValue = stringify(value.newValue, depth + 1);
+    switch (state) {
+      case 'updated': {
+        const curOldValue = stringify(value.oldValue, depth + 1);
+        const curNewValue = stringify(value.newValue, depth + 1);
 
-      return [`${shiftLine(depth + 1)}${signs.removed}${key}: ${curOldValue}`,
+        return [`${shiftLine(depth + 1)}${signs.removed}${key}: ${curOldValue}`,
         `${shiftLine(depth + 1)}${signs.added}${key}: ${curNewValue}`];
-    }
+      }
 
-    if (state === 'nested') {
-      const curValue = makeStylish(value, depth + 1);
-      return `${shiftLine(depth + 1)}${signs.unchanged}${key}: ${curValue}`;
-    }
+      case 'nested': {
+        const curValue = makeStylish(value, depth + 1);
+        return `${shiftLine(depth + 1)}${signs.unchanged}${key}: ${curValue}`;
+      }
 
-    return `${shiftLine(depth + 1)}${signs[state]}${key}: ${stringify(value, depth + 1)}`;
+      case 'added':
+      case 'removed':
+      case 'unchanged':
+        return `${shiftLine(depth + 1)}${signs[state]}${key}: ${stringify(value, depth + 1)}`;
+
+      default:
+        throw new Error(`Unknown type ${state}`);
+
+    }
   });
 
   return `{\n${items.join('\n')}\n${shiftBracket(depth)}}`;
