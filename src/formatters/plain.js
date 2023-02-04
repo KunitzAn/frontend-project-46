@@ -6,13 +6,13 @@ const stringify = (value) => {
   }
   return typeof value === 'string' ? `'${value}'` : value;
 };
+const buildPropertyPath = (keys) => keys.join('.');
 
 const formatPlain = (diff, keysAcc = []) => {
   const changedDiff = diff.filter((item) => item.state !== 'unchanged');
 
   const result = changedDiff.map((item) => {
     const curKeys = keysAcc.concat(item.key);
-    const buildPropertyPath = (keys) => keys.join('.');
 
     switch (item.state) {
       case 'added': {
