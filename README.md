@@ -26,19 +26,19 @@ This programm generate the difference between two data structure.
 
 ### Help
 
-[![asciicast](https://asciinema.org/a/Td6fAyDDTtWrLTExvtXDWHjC1.svg)](https://asciinema.org/a/Td6fAyDDTtWrLTExvtXDWHjC1)
+[![asciicast](https://asciinema.org/a/on17CqD4gbV0QTTaPHhVm42Vs.svg)](https://asciinema.org/a/on17CqD4gbV0QTTaPHhVm42Vs)
 
 ###
 
 Get result in stylish format (set by default)
-[![asciicast](https://asciinema.org/a/OZ1HXHVwWGYI9YNIJnP0943bc.svg)](https://asciinema.org/a/OZ1HXHVwWGYI9YNIJnP0943bc)
+[![asciicast](https://asciinema.org/a/MDxRCpxTUxkUyxASoQaN34dsS.svg)](https://asciinema.org/a/MDxRCpxTUxkUyxASoQaN34dsS)
 
 ###
 
 Get result in plain format
-[![asciicast](https://asciinema.org/a/LQXxP5FnErHynlAwp9rVYxYG7.svg)](https://asciinema.org/a/LQXxP5FnErHynlAwp9rVYxYG7)
+[![asciicast](https://asciinema.org/a/LyalImjJkc0LOXqDpYOxnZA15.svg)](https://asciinema.org/a/LyalImjJkc0LOXqDpYOxnZA15)
 
 ###
 
 Get result in json format
-[![asciicast](https://asciinema.org/a/pJDGcNBrxFQDFoiXSyqZdkOZT.svg)](https://asciinema.org/a/pJDGcNBrxFQDFoiXSyqZdkOZT)
+[![asciicast](https://asciinema.org/a/28tVhONudeUk4S3szXOUxIwKf.svg)](https://asciinema.org/a/28tVhONudeUk4S3szXOUxIwKf)
