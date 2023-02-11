@@ -10,7 +10,7 @@ const makeFormatting = (diff, formatName) => {
     case 'stylish':
       return formatStylish(diff);
     default:
-      return formatStylish(diff);
+      throw new Error(`Unknown format ${formatName}`);
   }
 };
 

@@ -24,3 +24,16 @@ test.each(cases)('Compare %s and %s to expect %s in %s format', (fileName1, file
   const expectedResult = readFileSync(expectedResultPath, 'utf8');
   expect(genDiff(filePath1, filePath2, format)).toBe(expectedResult);
 });
+
+const cases2 = [
+  ['file1.json', 'file2.json', 'stylish_result.txt'],
+  ['file1.yml', 'file2.yml', 'stylish_result.txt'],
+];
+
+test.each(cases2)('Compare %s and %s to expect %s in default format', (fileName1, fileName2, resultFileName) => {
+  const filePath1 = getPath(fileName1);
+  const filePath2 = getPath(fileName2);
+  const expectedResultPath = getPath(resultFileName);
+  const expectedResult = readFileSync(expectedResultPath, 'utf8');
+  expect(genDiff(filePath1, filePath2)).toBe(expectedResult);
+});
